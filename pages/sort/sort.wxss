@@ -1,0 +1,29 @@
+/* .container{
+  height: 100vh;
+} */
+.right-container{
+  /* height: 500rpx; */
+  height: 100vh;
+}
+.title{
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 50rpx;
+}
+.item-name{
+  margin-top: 13rpx;
+  font-size: 0.7rem;
+}
+.item-title{
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.bottom-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: gray;
+  background-color: #f5f2f2;
+  padding: 30rpx 0 ;
+}

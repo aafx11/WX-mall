@@ -1,0 +1,198 @@
+page{
+  background-color: #f5f5f5;
+}
+
+/* 顶部标签选择 */
+.tabs-container{
+  top: 0;
+
+}
+
+/* 订单列表 */
+.order-container{
+  height: 100%;
+}
+
+.order-item{
+  padding-left: 32rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+
+.order-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25rpx 0 0;
+  border-bottom: 1rpx solid #f4f4f4;
+  height: 80rpx;
+  font-size: 26rpx;
+  color: #555;
+}
+.close-tip{
+  color: #ff6700;
+}
+.order-product{
+  display: flex;
+  align-items: center;
+  height: 180rpx;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+.order-product image{
+  width: 145rpx;
+  height: 145rpx;
+  background-color: #f4f4f4;
+}
+.order-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 430rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+}
+.order-title{
+  font-size: 26rpx;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.order-desc{
+  font-size: 25rpx;
+  color: #999;
+}
+.order-status{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100rpx;
+  height: 100rpx;
+}
+.order-package{
+  font-size: 26rpx;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.order-state{
+  font-size: 25rpx;
+  color: #b4282d;
+}
+.order-foot{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25rpx 0 0;
+  height: 80rpx;
+  font-size: 26rpx;
+  color: #555;
+}
+.order-foot .btns{
+  display: flex;
+  justify-content: flex-end;
+}
+.btns .van-button{
+  margin-left: 20rpx;
+}
+
+/* 确认收货面板 */
+.comfire-receipt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 0 0 0;
+}
+.comfire-receipt .title{
+  font-weight: 700;
+  font-size: 34rpx;
+  margin-bottom: 20rpx;
+
+}
+.comfire-receipt .image{
+  display: flex;
+}
+.show-image, .more{
+  width: 160rpx;
+  height: 160rpx;
+  margin-left: 10rpx;
+  border-radius:10rpx;
+  border: 1rpx solid rgba(212, 210, 210, 0.5);
+}
+.more{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.comfire-receipt .desc{
+  text-align: center;
+  font-size: 28rpx;
+  padding: 20rpx 110rpx;  
+}
+.comfire-receipt .btn{
+  width: 80%;
+  height: 80rpx;
+  color: white;
+  background: linear-gradient(to right, #4bb0ff, #6149f6);
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+/* 没有更多数据了,已经到底了 */
+.noneMore-tip{
+  height: 100rpx;
+  color: gray;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* 确认付款或取消付款 */
+.popup-container{
+  width: 70vw;
+  /* height: 22vh; */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 90rpx 20rpx 30rpx 20rpx;
+}
+.popup-title{
+  font-size: 40rpx;
+}
+.popup-price{
+  font-size: 60rpx;
+  /* margin-top: 10rpx; */
+  padding: 0 0 25rpx 0;
+  border-bottom: 1rpx solid rgba(245, 242, 242, 0.9);
+}
+.btns-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+}
+.popup-btn{
+  width: 45%;
+  text-align: center;
+  padding: 15rpx 0;
+  border-radius: 10rpx;
+  
+}
+.cancel-btn{
+  border: 1rpx solid #ff6700;
+  color: #ff6700;
+}
+.comfire-btn{
+  color: white;
+  background-color: rgb(5, 193, 96);
+}

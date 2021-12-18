@@ -1,0 +1,108 @@
+page{
+  background-color: #f6f2f6;
+}
+/* 没有收货地址布局 */
+.address-none{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.none-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.none-container image{
+  width: 300rpx;
+  height: 300rpx;
+  margin-bottom: 30rpx ;
+}
+.none-container .tip{
+  font-size: 26rpx;
+  color: #999;
+}
+
+
+/* 收货地址列表 */
+.address-list{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 95rpx;
+  margin-bottom: calc(95rpx +  constant(safe-area-inset-bottom)); 
+  margin-bottom: calc(95rpx + env(safe-area-inset-bottom)) ;
+}
+
+.address-item{
+  display: flex;
+  flex-direction: column;
+  margin: 6rpx 20rpx;
+  padding: 20rpx 20rpx 10rpx 20rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+.item-top{
+  font-size: 32rpx;
+  color: #333;
+}
+.item-content{
+  font-size: 28rpx;
+  color: #999;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+}
+.item-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999;
+}
+.item-bottom .left{
+  display: flex;
+  align-items: center;
+}
+.item-bottom .right{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item-bottom .right .txt{
+  padding: 0 10rpx;
+}
+
+/* 添加收货地址 */
+.add-address-container{
+  position: fixed;
+  bottom: 0;
+  bottom: constant(safe-area-inset-bottom);
+  bottom: env(safe-area-inset-bottom);
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+.add-address-container .WX-txt,.add-address-container .txt{
+  width: 80vw;
+  height: 75rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+}
+.add-address-container .WX-txt{
+
+  background-color: #fff;
+  color: black;
+  border: 1px solid black;
+}
+.add-address-container .txt{
+  background-color: black;
+  color: white;
+}

@@ -1,0 +1,76 @@
+<!-- 顶部配送提示 -->
+<view class="express-container">
+  <view class="express-tip">配送方式</view>
+  <view>商家配送</view>
+</view>
+
+<view class="choose-address">
+  <!-- 无收货地址布局 -->
+  <van-cell title="请先添加收货地址" icon="location-o" is-link url="/pages/address/address?from=order" wx:if="{{ !hasAddress }}" />
+
+
+  <!-- 已选中收货地址布局 -->
+  <view wx:else class="address-container" bindtap="pushToSelectAddress">
+    <view class="address-left">
+      <van-icon name="location-o" />
+    </view>
+    <view class="address-mid">
+      <view class="mid-top">{{select_address.name}} {{select_address.mobile}}</view>
+      <view class="mid-bottom">
+        {{select_address.city}} {{select_address.street}}
+      </view>
+    </view>
+    <view class="address-right">
+      <van-icon name="arrow" />
+    </view>
+  </view>
+</view>
+
+<!-- 商品列表 -->
+<van-cell title="购物清单" icon="description" custom-class="goodsList-line" />
+<view class="goodsList">
+  <view class="goodsList-item" wx:for="{{orderData}}" wx:key="index">
+    <van-card num="{{item.number}}" price="{{item.price}}" desc="{{item.color}}{{item.size}}" title="{{item.name}}" thumb="{{ item.color_image}}" price-class="item-price" title-class="item.title">
+    </van-card>
+  </view>
+</view>
+<!-- 买家留言 -->
+<van-field model:value="{{ message }}" label="留言" placeholder="给卖家留言：（50字以内）" input-align="right" maxlength="50" />
+<!-- 订单金额信息 -->
+<view class="order-info">
+  <view class="info-item">
+    <view>商品总价</view>
+    <view>￥{{totalPrice}}</view>
+  </view>
+  <view class="info-item">
+    <view>运费</view>
+    <view>￥0.00</view>
+  </view>
+</view>
+<view class="bottom-container"></view>
+
+<view class="bottom"></view>
+
+<!-- 提交订单栏 -->
+<view class="cart-footer">
+  <view>实付:￥{{totalPrice}}</view>
+
+  <view class="submit-btn" bindtap="showPopup">
+    <text>提交订单</text>
+  </view>
+</view>
+
+<!-- 确认付款或取消付款 -->
+<van-popup show="{{ show }}" bind:close="onClose" closeable round close-on-click-overlay="{{false}}">
+  <view class="popup-container">
+    <view class="popup-title">xx官方商城</view>
+    <view class="popup-price">￥{{totalPrice}}</view>
+    <view class="btns-container">
+      <view class="popup-btn cancel-btn" bindtap="onClose">放弃支付</view>
+      <view class="popup-btn comfire-btn" bindtap="clickComfire">完成支付</view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 空地址提示 -->
+<van-toast id="van-toast" />

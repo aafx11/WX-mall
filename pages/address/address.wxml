@@ -1,0 +1,31 @@
+<!-- 没有收货地址布局 -->
+<view wx:if="{{addressListData.length == 0}}" class="address-none">
+  <view class="none-container">
+    <image src="../../dist/images/address.png"></image>
+    <text class="tip">你还没有收货地址，点击下方按钮添加吧</text>
+  </view>
+</view>
+
+<!-- 收货地址列表 -->
+<view wx:else class="address-list">
+  <view class="address-item" wx:for="{{addressListData}}" bindtap="{{from == 'order' ? 'selectAddress' : ''}}" data-index="{{index}}" wx:key="index">
+    <view class="item-top">{{item.name}} {{item.mobile}}</view>
+    <view class="item-content">{{item.city}} {{item.street}}</view>
+    <view class="item-bottom">
+      <view class="left" catchtap="clickDefault" data-index="{{index}}">
+        <icon type="{{item.isDefault?'success' : 'circle'}}" size="15" ></icon>
+        设为默认地址
+      </view>
+      <view class="right">
+        <view class="txt" catchtap="clickDelete" data-index="{{index}}">删除</view>
+        <view class="txt" catchtap="clickEdit" data-index="{{index}}">编辑</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 添加收货地址 -->
+<view class="add-address-container">
+  <!-- <view class="WX-txt">从微信导入</view> -->
+  <view class="txt" bindtap="clickAdd">添加收货地址</view>
+</view>

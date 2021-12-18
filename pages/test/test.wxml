@@ -1,0 +1,13 @@
+<view class="pop_lists">
+  <viwe class="sku_item" wx:for="{{skuSelect}}" wx:for-index="idx" wx:for-item="i" wx:key="idx">
+    <view class="pop_lists_name">{{i.name}}</view>
+    <view class="pop_item">
+      <view  wx:for="{{i.select}}" wx:for-index="idxj" wx:for-item="j" wx:key="idxj" data-name="{{j.name}}" data-index="{{idxj}}" data-parent-index="{{idx}}" data-state="{{j.state}}" bindtap="chouseModelType" class="pop_li {{j.state}} {{subIndex[idx]=== idxj ? 'select' : ''}}">
+      {{j.name}}
+      </view>
+    </view>
+  </viwe>
+</view>
+<view>
+  <button bindtap="buy">购买</button>
+</view>

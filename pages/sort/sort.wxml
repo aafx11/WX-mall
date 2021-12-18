@@ -1,0 +1,33 @@
+<!--pages/sort/sort.wxml-->
+<van-row>
+  <van-col span="5" wx:if="isShow">
+    <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+      <van-sidebar-item wx:for="{{allData}}" wx:key="index" wx:for-index="index" data-index="{{index}}" title="{{item.name}}" bindtap="selectType" />
+
+    </van-sidebar>
+
+  </van-col>
+  <van-col span="19" class="container">
+    <scroll-view wx:if="{{selectData.level !==1}}" class="right-container" scroll-y="true">
+      <van-card wx:for="{{selectData.child}}" wx:for-item="item" data-id="{{item._id}}" price="{{item.price}}" desc="已售{{item.sales_volume}}件" thumb="{{ item.good_cover }}" wx:key="index" bindtap="pushToDeatilPage">
+        <!-- title="{{item.name}}" -->
+        <view slot="title">
+          <text class="item-title">{{item.name}}</text>
+        </view>
+      </van-card>
+      <view class="bottom-container">
+        <view>没有更多了</view>
+      </view>
+    </scroll-view>
+    <view wx:else>
+      <view class="title">{{selectData.name}}</view>
+      <van-grid column-num="3">
+        <van-grid-item use-slot wx:for="{{ selectData.child }}" wx:for-item="item" wx:for-index="index" wx:key="index" data-item="{{item}}" bindtap="pushToSearchPage">
+          <image style="width: 60%; height: 80rpx;" src="{{item.image}}" />
+          <text class="item-name">{{item.name}}</text>
+        </van-grid-item>
+      </van-grid>
+    </view>
+  </van-col>
+
+</van-row>

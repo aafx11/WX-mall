@@ -1,0 +1,9 @@
+<!--components/custom-tab-bar/index.wxml-->
+
+<van-tabbar active="{{ active }}" bind:change="onChange" active-color="#DAA520"> 
+  <block wx:for="{{list}}" wx:key="index">
+    <van-tabbar-item icon="{{item.iconPath}}" icon-active="{{item.selectedIconPath}}">
+      {{item.text}}
+    </van-tabbar-item>
+  </block>
+</van-tabbar>

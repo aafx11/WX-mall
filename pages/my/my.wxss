@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 280rpx;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  width: 37%;
+}
+
+.avatar {
+  width: 230rpx;
+  height: 230rpx;
+  border-radius: 50%;
+}
+
+.hasAvatar {
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 50%;
+}
+
+.default-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15rpx 10rpx;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 15rpx 10rpx;
+}
+
+.bold {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+}
+.nickname-box{
+  display: flex;
+  justify-content: space-between;
+}
+.nickname {
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 4px;
+}
+.set-container{
+  /* margin-top: 8rpx; */
+  /* height: 80rpx; */
+  height: auto;
+  width: 50rpx;
+  border-radius: 50%;
+  /* border: 1px solid black; */
+}
+.small {
+  color: gray;
+  font-size: 0.5rem;
+}
+
+.date {
+  color: gray;
+  font-size: 0.7rem;
+  margin-top: 10rpx;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  height: 80rpx;
+  width: 200rpx;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 30rpx;
+  margin-top: 15rpx;
+}
+
+/* .logout-container{
+  display: flex;
+  justify-content: flex-start;
+} */
+.logout-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+  height: 80rpx;
+  width: 200rpx;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 30rpx;
+  /* margin-top: 15rpx; */
+  margin: 15rpx 0 0 0;
+}
+.button-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  height: 10rpx;
+  border-bottom: 8px solid #f3f3f3;
+}
+
+/* 我的订单和我的服务 */
+.order-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 30rpx;
+}
+
+.order-header .txt{
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.order-header .right{
+  font-size: 25rpx;
+  color: #666;
+
+}

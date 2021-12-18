@@ -1,0 +1,94 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/sort/sort",
+    "pages/my/my",
+    "pages/detail/detail",
+    "pages/search/search",
+    "pages/login/login",
+    "pages/order/order",
+    "pages/order/orderDetail",
+    "pages/orderList/orderList",
+    "pages/orderList/logistics",
+    "pages/address/address",
+    "pages/address/edit",
+    "pages/test/test"
+    
+  
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+  "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+  "van-icon": "@vant/weapp/icon/index",
+  "van-search": "@vant/weapp/search/index",
+  "van-image": "@vant/weapp/image/index",
+  "van-row": "@vant/weapp/row/index",
+  "van-col": "@vant/weapp/col/index",
+  "van-sidebar": "@vant/weapp/sidebar/index",
+  "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+  "van-grid": "@vant/weapp/grid/index",
+  "van-grid-item": "@vant/weapp/grid-item/index",
+  "van-divider": "@vant/weapp/divider/index",
+  "van-loading": "@vant/weapp/loading/index",
+  "van-card": "@vant/weapp/card/index",
+  "van-action-sheet": "@vant/weapp/action-sheet/index",
+  "van-cell": "@vant/weapp/cell/index",
+  "van-cell-group": "@vant/weapp/cell-group/index",
+  "van-popup": "@vant/weapp/popup/index",
+  "van-goods-action": "@vant/weapp/goods-action/index",
+  "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+  "van-goods-action-button": "@vant/weapp/goods-action-button/index",
+  "van-stepper": "@vant/weapp/stepper/index",
+  "van-toast": "@vant/weapp/toast/index",
+  "van-field": "@vant/weapp/field/index",
+  "van-button": "@vant/weapp/button/index",
+  "van-submit-bar": "@vant/weapp/submit-bar/index",
+  "van-radio": "@vant/weapp/radio/index",
+  "van-radio-group": "@vant/weapp/radio-group/index",
+  "van-checkbox": "@vant/weapp/checkbox/index",
+  "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+  "van-area": "@vant/weapp/area/index",
+  "van-tag": "@vant/weapp/tag/index",
+  "van-tab": "@vant/weapp/tab/index",
+  "van-tabs": "@vant/weapp/tabs/index",
+  "van-empty": "@vant/weapp/empty/index",
+  "van-dialog": "@vant/weapp/dialog/index",
+  "van-steps": "@vant/weapp/steps/index"
+
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于选择所在地址"
+    }
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text":"首页"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text":"分类"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text":"购物车"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text":"我的"
+      }
+    ]
+  }
+}

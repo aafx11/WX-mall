@@ -1,0 +1,69 @@
+/* 顶部配送提示 */
+.express-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(218, 218, 218, 0.5);
+}
+.express-tip{
+  color: #00b900;
+}
+.express-member{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60rpx;
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(218, 218, 218, 0.5);
+}
+.express-member .icon{
+  padding: 0 5rpx;
+}
+.express-member .txt{
+  padding: 0 10rpx;
+}
+/* 收货地址 */
+.address-container{
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  padding: 10rpx 10rpx;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(218, 218, 218, 0.5);
+
+}
+.mid-top{
+  font-size: 32rpx;
+  padding: 10rpx 0;
+
+}
+.mid-bottom{
+  color: #999;
+  font-size: 26rpx;
+}
+.address-left{
+  /* width: 5vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20rpx;
+}
+.address-mid{
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+.address-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

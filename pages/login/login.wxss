@@ -1,0 +1,27 @@
+.box{
+  /* width: 100vw;
+  height: 100vh; */
+  width: 100%;
+  height: 100%;
+  margin-top: 15rpx;
+}
+.image-container{
+  display: flex;
+  justify-content: center;
+}
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.login-button{
+  width: 80%;
+
+}
+.desc-container{
+  margin-top: 10rpx;
+  text-align: center;
+  font-size: 0.8rem;
+  color: gray;
+}

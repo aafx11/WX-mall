@@ -1,0 +1,86 @@
+<view>
+  <!-- 搜索栏 -->
+  <view class="search-container" bindtap="pushToSearch">
+    <view class="search-box">
+      <view class="search-text">搜索商品</view>
+      <view class="search-icon">
+        <van-icon name="search" size="40rpx" />
+      </view>
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <view>
+    <swiper class="swiper-container" indicator-dots="true" circular="true" autoplay="true">
+      <swiper-item wx:for="{{cover}}" wx:key="index">
+        <van-image width="100%" height="100%" src="{{item.carousel_picture}}" data-item="{{item}}" bindtap="bannerClickPush" />
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+<!-- 分割线 -->
+<view class="line-container">
+  <view class="line-item">
+    <van-icon name="shop-o" />官方商城
+  </view>
+  <view class="line-item">
+    <van-icon name="passed" />正品保障
+  </view>
+  <view class="line-item">
+    <van-icon name="logistics" />满69包邮
+  </view>
+</view>
+
+<!-- 商品分类 -->
+<view class="category-container">
+  <view class="category">
+    <van-grid column-num="5" border="{{ false }}">
+      <van-grid-item use-slot wx:for="{{ sortData }}" wx:for-item="item" wx:key="index" bindtap="pushToSort" data-name="{{item.select}}">
+        <image style="width: 80rpx; height: 80rpx;" src="{{item.image}}" class="category-image" />
+        <text>{{item.name}}</text>
+
+      </van-grid-item>
+    </van-grid>
+  </view>
+</view>
+
+<!-- 商品活动 -->
+<view class="activity">
+  <image class="activity-left" mode="sapectFill" src="{{activeImage[0].carousel_picture}}" data-item="{{activeImage[0]}}" bindtap="bannerClickPush"></image>
+  <view class="activity-right">
+    <image class="activity-right-item" src="{{activeImage[1].carousel_picture}}" mode="sapectFill" data-item="{{activeImage[1]}}" bindtap="bannerClickPush"></image>
+    <image class="activity-right-item" src="{{activeImage[2].carousel_picture}}" mode="sapectFill" data-item="{{activeImage[2]}}" bindtap="bannerClickPush"></image>
+  </view>
+</view>
+
+
+<!-- 商品列表 -->
+<view class="like-tip">为您推荐以下商品</view>
+<van-row custom-class="row-container" gutter="10">
+  <van-col span="12" wx:for="{{ goodsList }}" wx:for-item="item" wx:key="index" custom-class="col" data-id="{{item._id}}" bindtap="pushToDetail">
+    <view class="col-container">
+      <image style="width: 100%; height: 350rpx;" src="{{item.good_cover}}"></image>
+      <view class="van-multi-ellipsis--l2 item-name">
+        {{item.name}}
+      </view>
+      <view class="item-price">
+        ￥{{item.price}}
+      </view>
+      <view wx:if="{{item.is_NewProducts}}" class="goods-tag">
+       新品
+      </view>
+    </view>
+  </van-col>
+</van-row>
+<!-- 商品列表 -->
+
+<!-- 加载提示和底部提示 -->
+<view class="loading" wx:if="{{isLoading}}">
+  <van-loading size="30rpx" color="#1989fa">加载中...</van-loading>
+</view>
+
+<view class="bottom" wx:if="{{isBottom}}">
+  <view>没有更多了</view>
+</view>
+
+<!-- 底部 -->
+<view class="bottom-container"></view>

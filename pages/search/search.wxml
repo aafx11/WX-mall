@@ -1,0 +1,48 @@
+<!-- 搜素框 -->
+<view class="search-container">
+  <view class="search-box">
+    <view class="search-inner">
+      <view>
+      <van-icon name="search" size="40rpx" />
+    </view>
+    <view >
+      <input type="text" placeholder="输入喜欢的商品吧" confirm-type="search" class="input-box" focus="{{isFocus}}"
+      bindconfirm="searchData"
+      />
+    </view>
+    </view>
+  </view>
+  <view class="control-container">
+      <view wx:for="{{option}}" wx:for-item="item" wx:key="index" class="{{item.state ? 'red' : ''}}" data-mode="{{item.mode}}" data-index="{{index}}" bindtap="getClothesData">
+        {{item.name}}
+      </view>
+  </view>
+</view>
+
+
+
+<!-- 商品列表 -->
+<van-row custom-class="row-container" gutter="10">
+  <van-col span="12" wx:for="{{ searchData }}" wx:for-item="item"  wx:key="index" custom-class="col" data-id="{{item._id}}"  bindtap="pushToDetail">
+  <view class="col-container">
+    <image style="width: 100%; height: 350rpx;" src="{{item.good_cover}}"></image>
+    <view class="van-multi-ellipsis--l2 item-name">
+      {{item.name}}
+    </view>
+    <view class="item-price">
+      ￥{{item.price}}
+    </view>
+  </view>
+  </van-col>
+</van-row>
+<!-- 商品列表 -->
+
+
+
+<view class="loading" wx:if="{{isLoading}}">
+<van-loading size="30rpx" color="#1989fa" >加载中...</van-loading>
+</view>
+
+<view class="bottom" wx:if="{{isBottom}}">
+  <view>没有更多了</view>
+</view>

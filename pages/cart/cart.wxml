@@ -1,0 +1,141 @@
+<view class="box" wx:if="{{!hasLogin}}">
+  <view class="image-container">
+    <image src="../../dist/images/shop.png" mode="widthFix" class="image"></image>
+  </view>
+  <view class="login-container">
+    <van-button round type="info" size="large" class="login-button" bindtap="login">
+      微信用户一键登录
+    </van-button>
+  </view>
+  <view class="desc-container">
+    <text>登录后可同步购物车中的商品</text>
+  </view>
+</view>
+
+
+
+<view class="cart-container" wx:else>
+  <!--购物车顶部信息  -->
+  <block wx:if="{{!isEmpty}}">
+    <view class="cart-top">
+      <view>
+        <van-icon name="shop-o" />
+        <text class="cart-title">圣诞兔电商</text>
+      </view>
+      <view class="edit-button" wx:if="{{!isEdit}}" bindtap="switchEdit">
+        编辑
+      </view>
+      <view class="complete-button" wx:else bindtap="switchEdit">
+        完成
+      </view>
+    </view>
+    <view class="tip-container">
+      <view class="tip-icon">满包邮</view>
+      <view>满￥69.00，部分地区包邮</view>
+    </view>
+    <!-- 购物车列表 -->
+    <view class="cart-main">
+      <view class="cart-list">
+        <view class="cart-item" wx:for="{{cartData}}" wx:for-item="item" wx:for-index="index" data-index="{{index}}" wx:key="index">
+          <view class="checkbox-container">
+            <van-checkbox value="{{ item.selected }}" bind:change="onChange" data-index="{{index}}" icon-size="35rpx" checked-color="black"></van-checkbox>
+          </view>
+          <view class="item-card" mut-bind:tap="push" id="detail" data-item="{{item.product_id}}">
+            <van-card price="{{item.price}}" desc="{{item.color}}{{item.size}}" title="{{item.name}}" thumb="{{ item.color_image }}" custom-class="card-root" thumb-class="thumb-box" title-class="item.title">
+              <!-- <view slot="thumb">
+                <image src="{{item.color_image}}" class="thumb-box"></image>
+              </view> -->
+            </van-card>
+            <view class="card-stepper">
+              <van-stepper value="{{ item. number}}" disable-input="true" max="{{item.stock}}" data-index="{{index}}" bind:change="setStepper" id="stepper"/>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 购物车列表下方推荐 -->
+    <view class="list-bottom">
+      <view class="line"></view>
+      <view class="like-tip">为您推荐以下商品</view>
+
+      <!-- 推荐列表 -->
+      <van-row custom-class="row-container" gutter="10">
+        <van-col span="12" wx:for="{{ recommendedData }}" wx:for-item="item" wx:key="index" custom-class="col" data-id="{{item._id}}" bindtap="pushToDetail">
+          <view class="col-container">
+            <image style="width: 100%; height: 350rpx;" src="{{item.good_cover}}"></image>
+            <view class="van-multi-ellipsis--l2 item-name">
+              {{item.name}}
+            </view>
+            <view class="item-price">
+              ￥{{item.price}}
+            </view>
+          </view>
+        </van-col>
+      </van-row>
+      <!-- 推荐列表 -->
+
+      <view class="bottom-tip">已经到底了</view>
+    </view>
+
+    <!-- 底部提交订单栏 -->
+    <view class="cart-footer">
+      <view class="selectAll-button">
+        <van-checkbox value="{{ isSelectAll }}" bindtap="selectAll" checked-color="black" icon-size="35rpx">全选</van-checkbox>
+      </view>
+      <view class="control-container">
+        <view class="info-cotainer" wx:if="{{!isEdit}}">
+          <view>总计:</view>
+          <view>￥</view>
+          <view>{{totalPrice}}</view>
+        </view>
+        <view wx:if="{{!isEdit}}" class="control-button" bindtap="settlement">去结算</view>
+        <block wx:else>
+          <view class="info-cotainer"></view>
+          <view class="delete-button" bindtap="deleteGoods">删除</view>
+        </block>
+      </view>
+    </view>
+  </block>
+
+  <!-- 空购物车提示  -->
+  <block wx:else>
+    <view class="empty-tip">
+      <view class="image-container">
+        <image src="../../dist/images/cart3.png"></image>
+      </view>
+      <view class="desc-container">
+        暂无商品加入购物车，快去选购
+      </view>
+      <view class="push-button-container">
+        <view class="push-button" bindtap="pushToSort">去逛逛</view>
+      </view>
+    </view>
+    <!-- 购物车列表下方推荐 -->
+    <view class="list-bottom">
+      <view class="line"></view>
+      <view class="like-tip">为您推荐以下商品</view>
+
+      <!-- 推荐列表 -->
+      <van-row custom-class="row-container" gutter="10">
+        <van-col span="12" wx:for="{{ recommendedData }}" wx:for-item="item" wx:key="index" custom-class="col" data-id="{{item._id}}" bindtap="pushToDetail">
+          <view class="col-container">
+            <image style="width: 100%; height: 350rpx;" src="{{item.good_cover}}"></image>
+            <view class="van-multi-ellipsis--l2 item-name">
+              {{item.name}}
+            </view>
+            <view class="item-price">
+              ￥{{item.price}}
+            </view>
+          </view>
+        </van-col>
+      </van-row>
+      <!-- 推荐列表 -->
+
+      <view class="empty-bottom-tip">已经到底了</view>
+    </view>
+  </block>
+
+</view>
+
+<van-toast id="van-toast" />

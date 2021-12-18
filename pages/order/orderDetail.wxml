@@ -1,0 +1,137 @@
+<!-- 顶部订单状态提示  -->
+<view class="top-container">
+  <view class="txt" wx:if="{{order.state == '1'}}">
+    <van-icon name="credit-pay" size="40rpx" />
+    <text>待付款</text>
+  </view>
+  <view class="txt" wx:if="{{order.state == '2'}}">
+    <van-icon name="todo-list-o" size="40rpx" />
+    <text>待发货</text>
+  </view>
+  <view class="txt" wx:if="{{order.state == '3'}}">
+    <van-icon name="logistics" />
+    <text>待收货</text>
+  </view>
+  <view class="txt" wx:if="{{order.state == '4'}}">
+    <van-icon name="certificate" size="40rpx" />
+    <text>已完成</text>
+  </view>
+  <view class="txt" wx:if="{{order.state == '5'}}">
+    <van-icon name="close" />
+    <text>已取消</text>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="main-container">
+    <!-- 地址信息 -->
+    <view class="address-container">
+      <view class="address-left">
+        <van-icon name="location-o" />
+      </view>
+      <view class="address-mid">
+        <view class="mid-top">{{order.address.name}} {{order.address.mobile}}</view>
+        <view class="mid-bottom">
+          {{order.address.city}} {{order.address.street}}
+        </view>
+      </view>
+      <view class="address-right">
+
+      </view>
+    </view>
+
+    <!-- 购物清单 -->
+    <view class="goodsList-container">
+      <van-cell title="购物清单" icon="description" custom-class="goodsList-line" />
+      <view class="goodsList">
+        <view class="goodsList-item" wx:for="{{order.productList}}" wx:key="index" catchtap="goodsDetail" data-id="{{item.product_id[0]}}">
+          <van-card num="{{item.number}}" price="{{item.price}}" desc="{{item.color}}{{item.size}}" title="{{item.name}}" thumb="{{ item.color_image}}" price-class="item-price" title-class="item.title">
+          </van-card>
+        </view>
+      </view>
+    </view>
+
+    <!-- 订单编号和时间 -->
+    <view class="order-info">
+      <view>
+        订单编号:
+        <text>{{order.order_number}}</text>
+      </view>
+      <view>
+        创建时间:
+        <text>{{order.created}}</text>
+      </view>
+    </view>
+
+    <!-- 买家留言 -->
+    <view class="message" wx:if="{{order.message.length != 0}}">
+      <view class="title">留言</view>
+      <text class="message-info">{{order.message}}</text>
+    </view>
+
+    <!-- 订单金额信息 -->
+    <view class="order-price">
+      <view class="info-item">
+        <view>商品总价</view>
+        <view>￥{{order.totalPrice}}</view>
+      </view>
+      <view class="info-item">
+        <view>运费</view>
+        <view>￥0.00</view>
+      </view>
+    </view>
+
+    <!-- 底部 -->
+    <view class="bottom-container"></view>
+
+  </view>
+</view>
+
+<!-- 底部操作栏 -->
+<view class="bottom"></view>
+<view class="cart-footer">
+  <van-button size="small" wx:if="{{order.state == '1' || order.state == '2'}}" class="btn" catchtap="cancelOrder" data-id="{{order._id}}">取消订单</van-button>
+  <van-button size="small" wx:if="{{order.state == '1'}}" class="btn" catchtap="openPay" data-id="{{order._id}}">立即付款</van-button>
+  <van-button size="small" wx:if="{{order.state == '3'}}" class="btn" catchtap="clickLogistics" data-id="{{order._id}}">查看物流</van-button>
+  <van-button size="small" wx:if="{{order.state == '3'}}" class="btn" catchtap="openReceipt">确认收货</van-button>
+  <van-button size="small" wx:if="{{order.state == '4' || order.state == '5'}}" class="btn" catchtap="deleteOrder" data-id="{{order._id}}">删除订单</van-button>
+</view>
+
+<!-- 取消订单弹出框 -->
+<van-dialog id="van-dialog" />
+
+<!-- 消息提醒 -->
+<van-toast id="van-toast" />
+
+<!-- 立即付款面板 -->
+<van-popup show="{{ showPayment }}" bind:close="onClose" closeable round close-on-click-overlay="{{false}}">
+  <view class="popup-container">
+    <view class="popup-title">xx官方商城</view>
+    <view class="popup-price">￥{{order.totalPrice}}</view>
+    <view class="btns-container">
+      <view class="popup-btn cancel-btn" bindtap="onClose">放弃支付</view>
+      <view class="popup-btn comfire-btn" bindtap="clickComfire" data-id="{{order._id}}">完成支付</view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 确认收货面板 -->
+<van-popup show="{{ showReceipt }}" position="bottom" custom-style="height: 500rpx;" bind:close="closeReceipt" closeable round>
+  <view class="comfire-receipt">
+    <view class="title">
+      确定收到货了吗
+    </view>
+    <view class="image">
+      <image wx:for="{{order.productList}}" src="{{item.color_image}}" wx:if="{{index <= 2}}" wx:key="index" class="show-image"></image>
+      <view wx:if="{{order.productList.length >=3}}" class="more">
+        <van-icon name="ellipsis" />
+        <view>共{{order.productList.length}}件</view>
+      </view>
+    </view>
+    <view class="desc">
+      为了保证你的售后权益，请收到商品确认无误后再确认收货
+    </view>
+    <view class="btn" catchtap="comfireReceipt" data-id="{{order._id}}">
+      确认
+    </view>
+  </view>
+</van-popup>

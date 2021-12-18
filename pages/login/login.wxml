@@ -1,0 +1,16 @@
+<!-- <view>
+  <view bindtap="back">返回</view>
+</view> -->
+<view class="box">
+  <view class="image-container">
+    <image src="../../dist/images/sdlr.png" mode="widthFix" class="image"></image>
+  </view>
+  <view class="login-container">
+    <van-button round type="info" size="large" class="login-button" bindtap="login">
+      微信用户一键登录
+    </van-button>
+  </view>
+  <view class="desc-container">
+    <text>请完成登录后，再继续操作</text>
+  </view>
+</view>

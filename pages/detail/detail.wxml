@@ -1,0 +1,156 @@
+<view>
+  <swiper class="swiper-container" indicator-dots="true">
+    <swiper-item wx:for="{{goodsInfo.good_carousel}}" wx:for-item="item" wx:key="index">
+      <van-image width="100%" height="100%" src="{{item}}" />
+    </swiper-item>
+  </swiper>
+</view>
+<view class="info-container">
+  <view>
+    <text class="sale">销售价￥</text>
+    <text class="price">{{goodsInfo.price}}</text>
+  </view>
+  <view class="goods-name">
+    <text>{{goodsInfo.name}}</text>
+  </view>
+</view>
+<view class="line"></view>
+<!-- <view class="detail">
+  <view>商品详情</view>
+  <view>></view>
+</view> -->
+<!-- <van-action-sheet show=" false " title="商品详情">
+  <view>内容</view>
+</van-action-sheet> -->
+<!-- <van-cell title="商品详情" is-link /> -->
+<!-- <van-divider
+  
+  customStyle=" border:10rpx solid #f5f2f2; font-size: 18px;"
+>
+
+</van-divider> -->
+
+<van-cell title="商品详情" is-link bind:click="showPopup" />
+
+<van-popup show="{{ show }}" position="bottom" bind:close="onClose" custom-style="height: 20%" round>
+  <view>
+    <view class="att-box">
+      <view class="popup-title">
+        商品详情
+      </view>
+      <view class="popup-icon" bindtap="onClose">
+        <van-icon name="cross" />
+      </view>
+    </view>
+    <view class="popup-info">
+      <view>品牌:{{attribute.brand}}</view>
+      <view>上市时间:{{attribute.season}}</view>
+      <view>材质:{{attribute.fabric}}</view>
+    </view>
+  </view>
+
+</van-popup>
+<view class="line-bottom"></view>
+<!-- 规格选择 -->
+<van-cell title="请选择颜色、尺寸、数量" is-link bind:click="showSelect" />
+<van-popup show="{{ selectShow }}" position="bottom" bind:close="onCloseSelect" custom-style="height: 60%" round closeable>
+  <view class="select-info">
+    <view class="goods-image">
+      <image src="{{selGoodsInfo.selImage}}"></image>
+    </view>
+    <view class="goods-info">
+      <view class="sale-price">销售价￥<text>{{selGoodsInfo.selPrice}}</text></view>
+      <view class="sale-stock">库存{{selGoodsInfo.selStock}}件</view>
+      <view>请选择颜色、尺寸</view>
+    </view>
+  </view>
+  <view class="pop_lists">
+    <viwe class="sku_item" wx:for="{{skuSelect}}" wx:for-index="idx" wx:for-item="i" wx:key="idx">
+      <view class="pop_lists_name">{{i.name}}</view>
+      <view class="pop_item">
+        <view wx:for="{{i.select}}" wx:for-index="idxj" wx:for-item="j" wx:key="idxj" data-name="{{j.name}}" data-index="{{idxj}}" data-parent-index="{{idx}}" data-state="{{j.state}}" bindtap="chouseModelType" class="pop_li {{j.state}} {{subIndex[idx]=== idxj ? 'select' : ''}}">
+          {{j.name}}
+        </view>
+      </view>
+    </viwe>
+  </view>
+  <view class="number">
+    <view class="number-text">
+      <text>购买数量</text>
+    </view>
+    <view class="stepper">
+      <van-stepper value="{{ goodsCount }}" min="1" max="{{selGoodsInfo.selStock}}" disable-input="true" disabled="{{stepperDisable}}" bind:overlimit="addCount" bind:change="onChange" bind:change="onChange" />
+    </view>
+  </view>
+  <view class="button-container" wx:if="{{isNormal}}">
+    <view class="cart-button" bindtap="addToCart">加入购物车</view>
+    <view class="buy-container" bindtap="buy">
+      立刻购买
+    </view>
+  </view>
+  <view class="button-box" wx:if="{{isCart}}">
+    <view class="cart-buy-button" style="width:80%" bindtap="addToCart">加入购物车</view>
+  </view>
+  <view class="button-box" wx:if="{{isBuy}}">
+    <view class="cart-buy-button" style="width:80%" bindtap="buy">立刻购买</view>
+  </view>
+</van-popup>
+<!-- 规格选择 -->
+
+<view class="line-bottom"></view>
+<van-toast id="van-toast" />
+<!-- 商家配送 -->
+<van-cell title="商家配送" is-link bind:click="showExpress" />
+<van-popup show="{{ expressShow }}" position="bottom" bind:close="onCloseExpress" custom-style="height: 23%" round>
+  <view>
+    <view class="att-box">
+      <view class="popup-title">
+        配送方式
+      </view>
+      <view class="popup-icon" bindtap="onCloseExpress">
+        <van-icon name="cross" />
+      </view>
+    </view>
+    <view class="popup-info">
+      <view>
+        <van-icon name="logistics" />
+        <text>支持商家配送</text>
+        <view class="express-desc">
+          所有地区（除新疆维吾尔自治区、西藏自治区、海外、港澳台以外）、除新疆维吾尔自治区[全境]、西藏自治区[全境]、海外[全境]、港澳台[全境]
+        </view>
+      </view>
+      <view>
+
+      </view>
+    </view>
+  </view>
+
+</van-popup>
+<view class="detail-introduce">
+  <view>详情介绍</view>
+</view>
+<!-- 详情图片 -->
+<view class="image-container">
+  <view  wx:for="{{goodsInfo.product_image}}" wx:for-item="item" wx:key="index" class="detail-image">
+    <image src="{{item}}" mode="widthFix" class="image"></image>
+    <!-- <van-image width="828rpx" height="400rpx" src="{{item}}" /> -->
+  </view>
+</view>
+<!-- 详情图片 -->
+
+<!-- 底部提示 -->
+<view class="bottom-container">
+  <view>已经到底了</view>
+</view>
+
+<!-- 底部提示 -->
+
+<!-- 底部操作栏 -->
+<van-goods-action>
+  <van-goods-action-icon icon="contact" text="我的" link-type="switchTab" url="../../pages/my/my" />
+  <van-goods-action-icon icon="cart-o" text="购物车" link-type="switchTab" url="../../pages/cart/cart"  info="{{cartNumber}}"/>
+  <van-goods-action-icon icon="shop-o" text="店铺" link-type="switchTab" url="../../pages/index/index" />
+  <van-goods-action-button plain color="black" text="加入购物" bindtap="openCart"/>
+  <van-goods-action-button color="black" text="立即购买"  bindtap="openBuy"/>
+</van-goods-action>
+<!-- 底部操作栏 -->

@@ -1,0 +1,80 @@
+<view class="container">
+  <view class="avatar-container">
+    <image src="../../dist/images/defaultAvatar3.png" class="avatar" wx:if="{{!hasUserInfo}}"></image>
+    <image src="{{userInfo.avatarUrl}}" class="hasAvatar" wx:else></image>
+  </view>
+  <view class="default-container" wx:if="{{!hasUserInfo}}">
+    <view class="bold">制胜必须,这里必备</view>
+    <!-- <view class="bold">这里必备</view> -->
+    <view class="small">加入shopCLUB，解锁独享尖货</view>
+    <view class="small">专享体验和个性激励等丰富福利</view>
+    <button class="login-button" open-type="getUserInfo" bindtap="login">
+      <text>注册登录</text>
+    </button>
+  </view>
+  <view class="info-container" wx:else>
+    <view class="nickname-box">
+      <view class="nickname">{{userInfo.nickName}}</view>
+      <!-- <image src="../../dist/images/setting2.png" class="set-container"></image> -->
+    </view>
+    <view class="date">{{userInfo.created}}成为shopCLUB会员</view>
+    <view class="button-container">
+      <button class="logout-button" bindtap="logout">
+        <text>退出登录</text>
+      </button>
+    </view>
+  </view>
+</view>
+<view class="line">
+</view>
+
+<!-- 订单管理 -->
+<view class="order">
+  <view class="order-header">
+    <text class="txt">我的订单</text>
+    <view class="right" bindtap="pushToOrderList" data-type="0">
+      <text class="all">查看全部</text>
+      <van-icon name="arrow" />
+    </view>
+  </view>
+  <!-- 订单tab -->
+  <view class="order-tab">
+    <view class="tab">
+      <van-grid column-num="4" border="{{ false }}" >
+        <van-grid-item icon="credit-pay" text="待付款" badge="{{count.wait}}" bindtap="pushToOrderList" data-type="1" />
+        <van-grid-item icon="todo-list-o" text="待发货" badge="{{count.shipment}}" bindtap="pushToOrderList" data-type="2" />
+        <van-grid-item icon="logistics" text="待收货" badge="{{count.received}}" bindtap="pushToOrderList" data-type="3" />
+        <van-grid-item icon="completed" text="已完成" badge="{{count.completed}}" bindtap="pushToOrderList" data-type="4" />
+      </van-grid>
+
+      <!-- <van-grid column-num="4" border="{{ false }}" wx:else>
+        <van-grid-item icon="credit-pay" text="待付款" bindtap="pushToOrderList" data-type="1" />
+        <van-grid-item icon="todo-list-o" text="待发货" bindtap="pushToOrderList" data-type="2" />
+        <van-grid-item icon="logistics" text="待收货" bindtap="pushToOrderList" data-type="3" />
+        <van-grid-item icon="completed" text="已完成" bindtap="pushToOrderList" data-type="4" />
+      </van-grid> -->
+    </view>
+  </view>
+</view>
+<view class="line">
+</view>
+<!-- 个人服务 -->
+<view class="order">
+  <view class="order-header">
+    <text class="txt">我的服务</text>
+    <view class="right">
+      <text class="all"></text>
+    </view>
+  </view>
+  <!-- 个人服务tab -->
+  <view class="order-tab">
+    <view class="tab">
+      <van-grid column-num="4" border="{{ false }}">
+        <van-grid-item icon="newspaper-o" text="地址管理" bindtap="pushToAddress" />
+        <!-- <van-grid-item icon="todo-list-o" text="待发货" badge=""/> -->
+      </van-grid>
+    </view>
+  </view>
+</view>
+
+<van-toast id="van-toast" />

@@ -1,0 +1,36 @@
+<!-- 顶部配送提示 -->
+<view class="express-container">
+  <view>
+    <text class="express-tip">xx快递包裹:</text>
+    {{number}}
+  </view>
+</view>
+
+<!-- 配送员 -->
+<view class="express-member">
+  <view  class="icon"> 
+    <van-icon name="contact" />
+  </view>
+  <view class="txt">快递员: xxx</view>
+</view>
+
+<!-- 收货地址 -->
+<view class="address-container">
+  <view class="address-left">
+    <van-icon name="location-o" />
+  </view>
+  <view class="address-mid">
+    <view class="mid-top">{{address.name}} {{address.mobile}}</view>
+    <view class="mid-bottom">
+      {{address.city}} {{address.street}}
+    </view>
+  </view>
+</view>
+
+<!-- 物流信息 -->
+<van-steps
+  steps="{{ steps }}"
+  active="{{ 0 }}"
+  direction="vertical"
+
+/>

@@ -1,0 +1,64 @@
+page{
+  background-color: #f5f5f5;
+  
+}
+.content{
+  margin: 6rpx 20rpx;
+  border-radius: 10rpx;
+}
+.label-txt{
+  width: 130rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+.input-txt{
+  font-size: 26rpx;
+}
+
+.input-placeholder{
+  font-size: 26rpx;
+  color: #dcdcdc;
+}
+.check-default{
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0 0 20rpx;
+  font-size: 24rpx;
+}
+.check-default icon{
+  margin-right: 10rpx;
+}
+
+.save-address{
+  position: fixed;
+  bottom: 0;
+  bottom: constant(safe-area-inset-bottom);
+  bottom: env(safe-area-inset-bottom);
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+.save-address .txt{
+  width: 60vw;
+  height: 75rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  border: 1rpx solid #ff6700;
+  color: #ff6700;
+
+}
+.cell-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.address-icon{
+  width: 56rpx;
+  height: 56rpx;
+}
