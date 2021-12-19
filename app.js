@@ -2,7 +2,7 @@
 App({
   onLaunch() {
     wx.cloud.init({
-      env: '123',
+      env: '',
       traceUser: true
     })
 
