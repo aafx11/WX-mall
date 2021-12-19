@@ -6,7 +6,7 @@ App({
       traceUser: true
     })
 
-    this.getCartCount()
+    // this.getCartCount()
   },
 
   globalData: {
