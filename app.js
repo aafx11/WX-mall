@@ -2,7 +2,7 @@
 App({
   onLaunch() {
     wx.cloud.init({
-      env: '',// 填自己的环境id
+      env: 'cloud1-7gunq0vc9a762fcd',
       traceUser: true
     })
 
